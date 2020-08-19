@@ -1,0 +1,44 @@
+<form [formGroup]="form" class="normal-form" (ngSubmit)="formChanged()">
+    <mat-grid-list cols=" 1" rowHeight="300px">
+        <mat-grid-tile>
+
+            <div class="controles-container">
+                <input type="hidden" formControlName="$key">
+                <span class="close" (click)="close()">&times;</span>
+
+                <h5>OTP Verification</h5>
+                <mat-form-field>
+                    <div class="form-group">
+                        <input id="mobile" class="form-control" type="number" matInput formControlName="mobile"
+                            name="mobile" placeholder="Conform Mobile">
+                        <mat-error class="text-danger"
+                            *ngIf="(otpFormData.mobile.touched || submitted) && otpFormData.mobile.errors?.required">
+                            Mobile is required
+                        </mat-error>
+                        <mat-error class="text-danger"
+                            *ngIf="otpFormData.mobile.touched && otpFormData.mobile.errors?.invalidMobile">
+                            Only enter 10 digit number.
+                        </mat-error>
+                    </div>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input type="number" formControlName="otp" class="form-control" matInput placeholder="OTP">
+                    <mat-error *ngIf="(otpFormData.otp.touched || submitted) && otpFormData.otp.errors?.required">This
+                        field is mandatory.
+                    </mat-error>
+                    <mat-error *ngIf="otpFormData.otp.touched && otpFormData.otp.errors?.invalidOtp">Minimum 4
+                        number
+                        needed.
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="button-row">
+                    <button mat-raised-button color="primary" (click)="getOtp()">Verify</button>
+                    <button id="Resend-btn" mat-raised-button color="" disabled="false" (click)="resendOtp()">Resend
+                        OTP</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

@@ -1,0 +1,19 @@
+div.col-4{
+    background-color:lightsteelblue;
+}
+
+h1{
+    text-decoration: underline;
+    padding: 5px;
+    color:wheat;
+}
+
+li.list{
+    line-height: 1.6;
+    margin-left: 30px;
+    margin: 20px;
+}
+
+.container-fluid{
+    background-color:lightsteelblue;
+}

@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <h1>PERSONAL LOAN</h1>
+            <h2>Product Features</h2>
+            <ul class="list-group">
+                <li class="list">Low interest rates. Further, we charge interest on a daily reducing balance!</li>
+
+                <li class="list">Low processing charges.</li>
+
+                <li class="list">No hidden cost / administrative charges.</li>
+
+                <li class="list">Minimal documentation...something that you had always wanted</li>
+
+                <li class="list"> No prepayment penalties. Reduce your interest burden and optimally utilize your
+                    surplus funds by prepaying the loan</li>
+            </ul>
+            <!-- <img src="https://image.shutterstock.com/image-photo/business-concept-paper-tag-written-260nw-581362540.jpg"
+                alt="Loan Image"> -->
+        </div>
+
+        <div class="col-8">
+            <div class="jumbotron">
+                <h5>Loan Application</h5>
+                <form class="form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <!-- City -->
+                        <label for="city">City: <span class="lblError">*</span></label>
+                        <div class="controls">
+                            <input type="text" id="city" placeholder="City" maxlength="255" class="form-control"
+                                formControlName="city">
+                            <span class="text-danger"
+                                *ngIf="(formData.city.touched || submitted) && formData.city.errors?.required">
+                                City is required
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- PAN -->
+                        <label for="pan">PAN: <span class="lblError">*</span></label>
+                        <div class="controls">
+                            <input type="text" id="panNumber" placeholder="PAN" maxlength="10" class="form-control"
+                                formControlName="panNumber">
+                            <span class="text-danger"
+                                *ngIf="(formData.panNumber.touched || submitted) && formData.panNumber.errors?.required">
+                                PAN is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="formData.panNumber.touched && formData.panNumber.errors?.invalidPan">
+                                PAN should have minimum 5 uppercase characters, 4 number and 1 uppercase characters.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="my-input">Full Name: <span class="lblError">*</span></label>
+                        <input id="fullname" class="form-control" type="text" formControlName="fullname" name="fullname"
+                            placeholder="Full Name" maxlength="140">
+                        <span class="text-danger"
+                            *ngIf="(formData.fullname.touched || submitted) && formData.fullname.errors?.required">
+                            Name is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="my-input">Email: <span class="lblError">*</span></label>
+                        <input id="email" class="form-control" type="email" formControlName="email" name="email"
+                            placeholder="Email">
+                        <span class="text-danger"
+                            *ngIf="(formData.email.touched || submitted) && formData.email.errors?.required">
+                            Email is required
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="formData.email.errors?.email && formData.email.errors?.maxlength">
+                            Email format should be like this abc@gmail.com and maximum length 255.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="my-input">Mobile: <span class="lblError">*</span></label>
+                        <input id="mobile" class="form-control" type="number" formControlName="mobile" name="mobile"
+                            placeholder="Mobile">
+                        <span class="text-danger"
+                            *ngIf="(formData.mobile.touched || submitted) && formData.mobile.errors?.required">
+                            Mobile is required
+                        </span>
+                        <span class="text-danger"
+                            *ngIf="formData.mobile.touched && formData.mobile.errors?.invalidMobile">
+                            Only enter 10 digit number.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
