@@ -13,10 +13,10 @@ export class OtpComponent implements OnInit {
 
   form: FormGroup;
   resendCounter = 0;
-  responseOtp = {
-    status: "",
-  }
-  flag2: boolean;
+  // responseOtp = {
+  //   status: "",
+  // }
+  // flag2: boolean;
 
   constructor(private formBuilder: FormBuilder, private customValidator: ServicescustomvalidationService,
     private service: DataService, public dialogRef: MatDialogRef<OtpComponent>, private dialog: MatDialog) { }
@@ -71,9 +71,9 @@ export class OtpComponent implements OnInit {
       console.log(observableResult);
       observableResult.subscribe((result: any) => {
         console.log(result);
-        this.responseOtp = result;
-        this.flag2 = this.responseOtp.status == "Success" ? true : false;
-        if (this.flag2 == true) {
+        // this.responseOtp = result;
+        // this.flag2 = this.responseOtp.status == "Success" ? true : false;
+        if (result.status == "Success") {
           alert(`Thank you for verification ${this.form.value.mobile}`)
           this.form.reset();
           const dialogConfig = new MatDialogConfig();
