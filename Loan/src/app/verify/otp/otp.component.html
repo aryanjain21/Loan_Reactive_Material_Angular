@@ -35,7 +35,7 @@
 
                 <div class="button-row">
                     <button mat-raised-button color="primary" (click)="getOtp()">Verify</button>
-                    <button id="Resend-btn" mat-raised-button color="" disabled="false" (click)="resendOtp()">Resend
+                    <button id="Resend-btn" mat-raised-button color="" disabled={{value}} (click)="resendOtp()">Resend
                         OTP</button>
                 </div>
             </div>

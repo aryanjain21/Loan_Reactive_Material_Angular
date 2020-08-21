@@ -15,10 +15,6 @@ export class VerifyComponent implements OnInit {
 
   regForm: FormGroup;
   submitted = false;
-  // responseObj = {
-  //   status: "",
-  // };
-  // flag: boolean;
 
   constructor(private formBuilder: FormBuilder, private customValidator: ServicescustomvalidationService,
     private service: DataService, private dialog: MatDialog) { }
@@ -47,9 +43,6 @@ export class VerifyComponent implements OnInit {
       let observableResult = this.service.insertUserDetails(this.regForm.value);
       observableResult.subscribe((result: any) => {
         console.log(result);
-        // this.responseObj = result;
-        // this.flag = this.responseObj.status == "Success" ? true : false;
-        // console.log(this.flag);
         result.status == "Success" ? this.getModal() : alert("Invalid form");
         // this.flag ? this.getModal() : alert("Invalid form");
       }, error => {

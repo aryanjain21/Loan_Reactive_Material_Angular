@@ -13,10 +13,7 @@ export class OtpComponent implements OnInit {
 
   form: FormGroup;
   resendCounter = 0;
-  // responseOtp = {
-  //   status: "",
-  // }
-  // flag2: boolean;
+  value = "false";
 
   constructor(private formBuilder: FormBuilder, private customValidator: ServicescustomvalidationService,
     private service: DataService, public dialogRef: MatDialogRef<OtpComponent>, private dialog: MatDialog) { }
@@ -38,21 +35,23 @@ export class OtpComponent implements OnInit {
   }
 
   resendOtp() {
-    let resendBtn = document.getElementById("Resend-btn");
-    resendBtn.setAttribute("disabled", "true");
+    // let resendBtn = event.target;
+    // resendBtn.setAttribute("disabled", "true");
+    this.value = "true"
     ++this.resendCounter;
     console.log(this.resendCounter);
     if (this.resendCounter < 3) {
       console.log("hhhhhhh")
       setTimeout(() => {
         console.log("kkkk")
-        resendBtn.removeAttribute("disabled");
+        this.value = "false";
+        // resendBtn.removeAttribute("disabled");
         console.log(this.resendCounter);
       }, 180000)
     }
     else if (this.resendCounter === 3) {
       alert("Please try again after an hour.");
-      resendBtn.setAttribute("disabled", "true");
+      // resendBtn.setAttribute("disabled", "true");
       this.dialogRef.close();
     }
   }
@@ -71,8 +70,7 @@ export class OtpComponent implements OnInit {
       console.log(observableResult);
       observableResult.subscribe((result: any) => {
         console.log(result);
-        // this.responseOtp = result;
-        // this.flag2 = this.responseOtp.status == "Success" ? true : false;
+
         if (result.status == "Success") {
           alert(`Thank you for verification ${this.form.value.mobile}`)
           this.form.reset();
